@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="main">
+<head>
+    <title>Pizza shop</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>-->
+    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.ex.css">
+    <link rel="stylesheet" type="text/css" href="css/ui-grid-unstable.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/select.css"/>
+
+    <link rel="stylesheet" type="text/css" href="css/select2.css">
+    <link rel="stylesheet" type="text/css" href="css/selectize.default.css">
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script type="text/javascript" src="js/ui-grid-unstable.min.js"></script>
+    <script type="text/javascript" src="js/select.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/users/users.js"></script>
+    <script type="text/javascript" src="js/common/utils.js"></script>
+
+    <style>
+        html, body {
+            min-height: 700px;
+            min-width: 1004px;
+            height: 100%;
+        }
+
+        textarea {
+            resize:none;
+        }
+
+        .nav-tabs > li .close {
+            margin: -3px 0 0 10px;
+            font-size: 18px;
+            padding: 5px 0;
+            float: right;
+            color: #2c3e50;
+        }
+
+        .fill-height {
+            height: 100%;
+        }
+		
+		.navbar-collapse{
+			padding-right: 0;
+		}
+		
+		.navbar-right{
+			margin-left: 0;
+			margin-right: 0px;
+		}
+		
+		.thumbnail{
+			height: 280px;
+            padding-top: 30px;
+		}
+		
+		.navbar-default .navbar-nav>li>a{
+			font-size: 14px;
+		}
+		
+		.puller{
+			clear: both;
+			float: none;
+			width: 100%;
+		}
+
+        button.btn.btn-default:focus {
+            outline: 0px;
+        }
+
+    </style>
+</head>
+<body ng-controller="MainCtrl as mainCtrl">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <!--<a class="navbar-brand" href="#">
+              <img alt="Brand" src="">
+            </a> -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img style="height: 24px; width: 24px;" src="img/logo.png"></span></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+                <li ng-hide="isHidden('mi-managing')" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Управление <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ng-hide="isHidden('users')"><a href ng-click="mainCtrl.addTab('users', 'Пользователи', '<users-list></users-list>')">Пользователи</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+                <li class="dropdown navbar-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="glyphicon glyphicon-menu-down"></span>
+                    </a>
+                    <ul class="dropdown-menu ">
+                        <li><a href ng-click="toggleModal()"><b>{{currentUser.shortName}}</b></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/api/logout">Выход</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div style="top: 65px; left: 0; right: 0; bottom: 0; position: absolute; width: auto; height: auto;">
+
+
+    <div style="height: calc(100% - 40px);  min-height: 660px;">
+        <ul id="pageTab" class="nav nav-tabs">
+            <li ng-hide="isHidden('page-tab')" class="active" id="tabHeader_users"><a href="#tabContent_users" data-toggle="tab"><b>Пользователи</b>
+                <button class="close" type="button" ng-click="mainCtrl.removeTab('users')" title="Закрыть вкладку">×</button></a></li>
+
+        </ul>
+        <div id="pageTabContent" class="tab-content" style="height: calc(100% - 43px);">
+            <users-list ng-hide="isHidden('page-tab')" style="width: 100%; height: 100%; padding: 10px" class="tab-pane active" id="tabContent_users"></users-list>
+
+        </div>
+    </div>
+
+
+		<div class="puller"></div>
+        <div style="height: 40px; background-color: #2c3e50;   clear: both;">
+            <div style="text-align: right; height: 100%">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

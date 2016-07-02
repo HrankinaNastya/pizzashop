@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk" ng-app="login">
+<head>
+    <title>Авторизация</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.ex.css">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .help-block {
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            color: #737373;
+        }
+    </style>
+</head>
+<body ng-controller="LoginCtrl as loginCtrl">
+<div class="container">
+    <form class="form-signin" action="/api/login" method="post">
+        <h2 class="form-signin-heading">Авторизация</h2>
+        <label for="inputLogin" class="sr-only">Логин</label>
+        <input name="username" type="text" id="inputLogin" class="form-control" placeholder="Логін" required autofocus>
+        <label for="inputPassword" class="sr-only">Пароль</label>
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="remember_me"> Запомнить меня
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <p class="help-block" ng-if="loginCtrl.showMsg" style="color: darkred;"> {{loginCtrl.msg}} </p>
+    </form>
+</div>
+</body>
+</html>

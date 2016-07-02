@@ -1,0 +1,56 @@
+<modal title="Профиль пользователя" visible="showModal" ng-init="changePwd=false">
+    <form name="profileEditForm" role="form">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="mainCtrl.closeAlert($index)">{{alert.msg}}</alert>
+        <fieldset ng-disabled="cuc.loading">
+            <div class="form-group">
+                <label for="lastName">Фамилия</label>
+                <input type="text" class="form-control input-md" id="lastName" ng-value="currentUser.lastName"
+                       readonly/>
+            </div>
+            <div class="form-group">
+                <label for="firstName">Имя</label>
+                <input type="text" class="form-control input-md" id="firstName" ng-value="currentUser.firstName"
+                       readonly/>
+            </div>
+            <div class="form-group">
+                <label for="secondName">По батькові</label>
+                <input type="text" class="form-control input-md" id="secondName" ng-value="currentUser.secondName"
+                       readonly/>
+            </div>
+            <div class="form-group">
+                <label for="role">Роль</label>
+                <input type="text" class="form-control input-md" id="role" ng-value="currentUser.roleComments" readonly/>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" name="checkboxes" id="cbChangePassword" ng-model="cuc.changePwd"> Изменить
+                пароль
+            </div>
+            <div class="form-group" ng-class="{hidden: !cuc.changePwd}">
+                <label for="oldPassword">Старый пароль</label>
+                <input maxlength="20" type="password" class="form-control input-md" id="oldPassword" placeholder="Не указано"
+                       ng-required="changePwd" ng-model="cuc.oldPassword"/>
+            </div>
+            <div class="form-group" ng-class="{hidden: !cuc.changePwd}">
+                <label for="newPassword">Новый пароль</label>
+                <input maxlength="20" type="password" class="form-control input-md" id="newPassword" placeholder="Не указано"
+                       ng-required="changePwd" ng-model="cuc.newPassword"/>
+            </div>
+            <div class="form-group" ng-class="{hidden: !cuc.changePwd}">
+                <label for="newPasswordRepeat">Подтверждение</label>
+                <input maxlength="20" type="password" class="form-control input-md" id="newPasswordRepeat" placeholder="Не указано"
+                       ng-required="changePwd" ng-model="cuc.newPasswordRepeat"/>
+            </div>
+
+            <div class="btn-group" ng-class="{hidden: !cuc.changePwd}">
+                <button type="button" class="btn btn-success"
+                        ng-click="cuc.changePassword()">Ок
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="cuc.clearForm(); toggleModal()">Отмена</button>
+            </div>
+            <button type="submit" class="btn btn-success" ng-click="cuc.clearForm(); toggleModal()" ng-class="{hidden: cuc.changePwd}">
+                Закрыть
+            </button>
+        </fieldset>
+    </form>
+</modal>

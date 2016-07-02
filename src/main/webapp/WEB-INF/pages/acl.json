@@ -1,0 +1,19 @@
+{
+  "mi-managing": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": true
+  },
+  "users": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": true
+  },
+  "settings": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": false
+  },
+
+  "page-tab": {
+    "ROLE_CASHIER": true,
+    "ROLE_CASHIER": false
+  }
+}

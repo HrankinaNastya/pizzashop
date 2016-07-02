@@ -1,0 +1,42 @@
+<div ng-controller="usersCtrl as formController" style="height: 100%">
+    <form class="form-inline" style="height: 50px;">
+        <div class="form-group">
+            <label for="exampleInputName2">Логин</label>
+            <input type="text" maxlength="50" ng-model="formController.filters.username" class="form-control" id="exampleInputName2" placeholder="Логин">
+        </div>
+        <div class="form-group">
+            <label>Роль</label>
+        </div>
+        <div class="form-group">
+            <ui-select id="role" ng-model="formController.filters.role" theme="selectize" style="width: 196px; margin-top: 4px;">
+                <ui-select-match placeholder="Роль">{{$select.selected.comments}}
+                </ui-select-match>
+                <ui-select-choices repeat="role in formController.roles | filter: $select.search">
+                    <span ng-bind-html="role.comments | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="formController.doFilters()">Обновить</button>
+        <button type="submit" class="btn btn-default" ng-click="formController.clearFilters()">Сбросить</button>
+    </form>
+    <div ui-grid="gridOptions" class="ui-grid"
+         ui-grid-selection ui-grid-auto-resize style="width: 100%; height: calc(100% - 50px - 40px);" ></div>
+    <div class="btn-group" style="height: 40px; padding-top: 7px;">
+        <button type="button" ng-click="formController.showCreate()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Добавить</button>
+        <button type="button" ng-disabled="!formController.isRowSelected" ng-click="formController.showEdit()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Редактировать</button>
+        <button type="button" ng-disabled="!formController.isRowSelected" ng-click="formController.showDelete()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Удалить</button>
+
+        <button type="button" ng-click="formController.reload()" class="btn btn-success" style="margin: 0px 0px 0px 7px !important; padding: 6px 10px; font-size: 12px;">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
+
+        <pagination style="margin: 0px 0px 0px 7px !important;" total-items="formController.totalElements"
+                    items-per-page="formController.size"
+                    ng-model="formController.currentPage"
+                    max-size="formController.maxSize"
+                    num-pages="formController.totalPages"
+                    ng-change="formController.pageChanged()"
+                    class="pagination-sm" boundary-links="true" rotate="false"
+                    previous-text="Назад" next-text="Далее" first-text="Первая" last-text="Последняя"></pagination>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="modal-body" style="padding:0px">
+    <div class="alert alert-dismissable" close="closeAlert($index)" ng-class="['alert-' + (data.type || 'warning')]" style="margin-bottom:0px">
+        <button ng-show="true" type="button" class="close" ng-click="close()">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <div><span class="ng-binding ng-scope">{{data.msg}}</span></div>
+    </div>
+</div>

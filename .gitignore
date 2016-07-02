@@ -30,6 +30,9 @@
 
 # IntelliJ
 /out/
+target
+.idea
+pizzashop.iml
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

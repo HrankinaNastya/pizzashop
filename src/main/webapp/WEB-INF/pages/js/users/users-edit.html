@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-if="recordId">Пользователь: <b>{{formRecord.username}}</b></h3>
+    <h3 class="modal-title" ng-if="!recordId">Новый пользователь</h3>
+</div>
+<div class="modal-body">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <fieldset ng-disabled="loading">
+        <div ng-if="!recordId" class="form-group">
+            <label for="login">Логин*</label>
+            <div class="controls">
+                <input type="text" maxlength="50" ng-change="onUsernameEnter()" style="text-transform: lowercase;" class="form-control input-md" id="login" ng-model="formRecord.username"/>
+                <p class="help-block" ng-if="validation.username.error" style="color: darkred;">*такой пользователь уже существует</p>
+                <p class="help-block" ng-if="validation.username.success" style="color: darkgreen;">*корректное имя пользователя</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Фамилия*</label>
+            <input type="text" maxlength="50" class="form-control input-md" id="lastName" ng-model="formRecord.lastName"/>
+        </div>
+        <div class="form-group">
+            <label for="firstName">Имя*</label>
+            <input type="text" maxlength="50" class="form-control input-md" id="firstName" ng-model="formRecord.firstName"/>
+        </div>
+        <div class="form-group">
+            <label for="secondName">Отчество</label>
+            <input type="text" maxlength="50" class="form-control input-md" id="secondName" ng-model="formRecord.secondName"/>
+        </div>
+        <div class="form-group">
+            <label for="role">Роль*</label>
+            <ui-select id="role" ng-model="formRecord.role" theme="selectize">
+                <ui-select-match placeholder="Укажите роль пользователя">{{$select.selected.comments}}
+                </ui-select-match>
+                <ui-select-choices repeat="role in roles | filter: $select.search">
+                    <span ng-bind-html="role.comments | highlight: $select.search"></span>
+                    <!--<small ng-bind-html="country.code | highlight: $select.search"></small>-->
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <div ng-if="recordId" class="form-group">
+            <input type="checkbox" name="checkboxes" id="cbChangePassword" ng-model="formRecord.changePwd"> Изменить пароль
+            <input type="password" class="form-control input-md" ng-readonly="!formRecord.changePwd" id="newPassword"
+                   placeholder="Не указано"
+                   ng-required="formRecord.changePwd" ng-model="formRecord.password"/>
+        </div>
+        <div ng-if="!recordId" class="form-group">
+            <label for="password">Пароль*</label>
+            <input type="text" maxlength="20" class="form-control input-md" id="password" ng-model="formRecord.password"/>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" name="checkboxes" id="cbEnabled" ng-model="formRecord.enabled"> Активный
+        </div>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="loading" ng-click="ok()">Сохранить</button>
+    <button class="btn btn-primary" ng-click="cancel()">Отмена</button>
+</div>
