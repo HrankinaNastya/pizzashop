@@ -1,0 +1,22 @@
+<div ng-controller="SaucesCtrl as formController" style="height: 100%">
+    <div ui-grid="gridOptions" class="ui-grid"
+         ui-grid-selection ui-grid-auto-resize style="width: 100%; height: calc(100% - 50px - 40px);" ></div>
+    <div class="btn-group" style="height: 40px; padding-top: 7px;">
+        <button type="button" ng-click="formController.showCreate()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Добавить</button>
+        <button type="button" ng-disabled="!formController.isRowSelected" ng-click="formController.showEdit()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Редактировать</button>
+        <button type="button" ng-disabled="!formController.isRowSelected" ng-click="formController.showDelete()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Удалить</button>
+
+        <button type="button" ng-click="formController.reload()" class="btn btn-success" style="margin: 0px 0px 0px 7px !important; padding: 6px 10px; font-size: 12px;">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
+
+        <pagination style="margin: 0px 0px 0px 7px !important;" total-items="formController.totalElements"
+                    items-per-page="formController.size"
+                    ng-model="formController.currentPage"
+                    max-size="formController.maxSize"
+                    num-pages="formController.totalPages"
+                    ng-change="formController.pageChanged()"
+                    class="pagination-sm" boundary-links="true" rotate="false"
+                    previous-text="Назад" next-text="Далее" first-text="Первая" last-text="Последняя"></pagination>
+    </div>
+</div>

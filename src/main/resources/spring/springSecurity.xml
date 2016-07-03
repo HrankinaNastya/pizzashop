@@ -23,6 +23,10 @@
         <security:intercept-url pattern="/api/users**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_CASHIER')"/>
         <security:intercept-url pattern="/api/users**/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_CASHIER')"/>
 
+        <!-- PIZZA -->
+        <security:intercept-url pattern="/api/sauces**/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/sauces**" access="hasAnyRole('ROLE_ADMIN')"/>
+
         <security:intercept-url pattern="/**" access="denyAll"/>
         <security:form-login login-page="/login.html"
                              login-processing-url="/api/login"

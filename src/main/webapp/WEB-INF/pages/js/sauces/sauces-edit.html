@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-if="recordId">Соус №: <b>{{formRecord.id}}</b></h3>
+
+    <h3 class="modal-title" ng-if="!recordId">Новый вид соуса</h3>
+</div>
+<div class="modal-body">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <fieldset ng-disabled="loading">
+        <ul id="pageTab" class="nav nav-tabs">
+            <li id="tab1" class="active"><a href="#tabBody1" data-toggle="tab"><b>Основная информация</b></a></li>
+        </ul>
+        <div id="pageTabContent" class="tab-content" style="min-height: 600px; padding-top: 10px;">
+            <div id="tabBody1" class="tab-pane active">
+
+                <div class="form-group">
+                    <label for="name">Название*</label>
+
+                    <input maxlength="50" class="form-control input-md" rows="3" id="name"
+                           ng-model="formRecord.name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Описание</label>
+
+                    <input maxlength="100" class="form-control input-md" rows="3" id="description"
+                           ng-model="formRecord.description" required>
+                </div>
+
+            </div>
+
+        </div>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="loading" ng-click="ok()">Сохранить</button>
+    <button class="btn btn-primary" ng-click="cancel()">Отмена</button>
+</div>

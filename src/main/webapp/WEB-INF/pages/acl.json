@@ -12,6 +12,15 @@
     "ROLE_CASHIER": false
   },
 
+  "mi-pizza": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": true
+  },
+  "sauces": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": false
+  },
+
   "page-tab": {
     "ROLE_CASHIER": true,
     "ROLE_CASHIER": false
