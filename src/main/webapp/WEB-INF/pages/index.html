@@ -20,6 +20,9 @@
     <script type="text/javascript" src="js/select.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/users/users.js"></script>
+    <script type="text/javascript" src="js/sauces/sauces.js"></script>
+    <script type="text/javascript" src="js/shortcakes/shortcakes.js"></script>
+    <script type="text/javascript" src="js/sizes/sizes.js"></script>
     <script type="text/javascript" src="js/common/utils.js"></script>
 
     <style>
@@ -106,11 +109,22 @@
                     </ul>
                 </li>
 
+                <li ng-hide="isHidden('mi-pizza')" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Пицца <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ng-hide="isHidden('sauces')"><a href ng-click="mainCtrl.addTab('sauces', 'Соусы', '<sauces-list></sauces-list>')">Соусы</a>
+                        </li>
+                        <li ng-hide="isHidden('shortcakes')"><a href ng-click="mainCtrl.addTab('shortcakes', 'Коржи', '<shortcakes-list></shortcakes-list>')">Коржи</a>
+                        </li>
+                        <li ng-hide="isHidden('sizes')"><a href ng-click="mainCtrl.addTab('sizes', 'Размеры', '<sizes-list></sizes-list>')">Размеры</a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
-
                 <li class="dropdown navbar-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">

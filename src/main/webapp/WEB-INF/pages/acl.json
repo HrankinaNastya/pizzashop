@@ -20,6 +20,14 @@
     "ROLE_ADMIN": true,
     "ROLE_CASHIER": false
   },
+  "shortcakes": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": false
+  },
+  "sizes": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": false
+  },
 
   "page-tab": {
     "ROLE_CASHIER": true,

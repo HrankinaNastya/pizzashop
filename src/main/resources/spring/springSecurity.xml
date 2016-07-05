@@ -26,6 +26,12 @@
         <!-- PIZZA -->
         <security:intercept-url pattern="/api/sauces**/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/api/sauces**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/shortcakes**/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/shortcakes**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/sizes**/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/sizes**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/pizzas**/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/pizzas**" access="hasAnyRole('ROLE_ADMIN')"/>
 
         <security:intercept-url pattern="/**" access="denyAll"/>
         <security:form-login login-page="/login.html"
