@@ -28,6 +28,10 @@
     "ROLE_ADMIN": true,
     "ROLE_CASHIER": false
   },
+  "pizzas": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": false
+  },
 
   "page-tab": {
     "ROLE_CASHIER": true,

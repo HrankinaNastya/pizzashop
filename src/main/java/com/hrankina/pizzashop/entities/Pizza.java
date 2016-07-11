@@ -24,10 +24,10 @@ public class Pizza extends HistoricalEntity {
     private Double  price;
 
     @Column(name = "PREVIEW")
-    private byte[] preview;
+    private String preview;
 
     @Column(name = "PREVIEWLARGE")
-    private byte[] previewLarge;
+    private String previewLarge;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -57,19 +57,19 @@ public class Pizza extends HistoricalEntity {
         this.price = price;
     }
 
-    public byte[] getPreview() {
+    public String getPreview() {
         return preview;
     }
 
-    public void setPreview(byte[] preview) {
+    public void setPreview(String preview) {
         this.preview = preview;
     }
 
-    public byte[] getPreviewLarge() {
+    public String getPreviewLarge() {
         return previewLarge;
     }
 
-    public void setPreviewLarge(byte[] previewLarge) {
+    public void setPreviewLarge(String previewLarge) {
         this.previewLarge = previewLarge;
     }
 

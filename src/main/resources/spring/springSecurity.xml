@@ -32,6 +32,8 @@
         <security:intercept-url pattern="/api/sizes**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/api/pizzas**/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/api/pizzas**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/pizza-items**/**" access="hasAnyRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/api/pizza-items**" access="hasAnyRole('ROLE_ADMIN')"/>
 
         <security:intercept-url pattern="/**" access="denyAll"/>
         <security:form-login login-page="/login.html"

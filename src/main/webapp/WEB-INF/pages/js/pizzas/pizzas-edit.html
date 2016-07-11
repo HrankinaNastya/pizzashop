@@ -1,0 +1,61 @@
+<div class="modal-header">
+    <h3 class="modal-title" ng-if="recordId">Пицца №: <b>{{formRecord.id}}</b></h3>
+
+    <h3 class="modal-title" ng-if="!recordId">Новый вид пиццы</h3>
+</div>
+<div class="modal-body">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <fieldset ng-disabled="loading">
+        <ul id="pageTab" class="nav nav-tabs">
+            <li id="tab1" class="active"><a href="#tabBody1" data-toggle="tab"><b>Основная информация</b></a></li>
+        </ul>
+        <div id="pageTabContent" class="tab-content" style="min-height: 200px; padding-top: 10px;">
+            <div id="tabBody1" class="tab-pane active">
+
+                <div class="form-group">
+                    <label for="name">Название*</label>
+
+                    <input maxlength="50" class="form-control input-md" rows="3" id="name"
+                           ng-model="formRecord.name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Стоимость, грн*</label>
+
+                    <input maxlength="50" class="form-control input-md" rows="3" id="price"
+                           ng-model="formRecord.price" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="name">Картинка</label>
+
+                    <input maxlength="50" class="form-control input-md" rows="3" id="preview"
+                           ng-model="formRecord.preview">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Большая картинка</label>
+
+                    <input maxlength="50" class="form-control input-md" rows="3" id="previewLarge"
+                           ng-model="formRecord.previewLarge">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="name">Описание</label>
+
+                    <input maxlength="150" class="form-control input-md" rows="3" id="description"
+                           ng-model="formRecord.description">
+                </div>
+
+            </div>
+
+        </div>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="loading" ng-click="ok()">Сохранить</button>
+    <button class="btn btn-primary" ng-click="cancel()">Отмена</button>
+</div>
