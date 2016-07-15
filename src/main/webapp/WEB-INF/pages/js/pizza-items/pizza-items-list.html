@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div ng-controller="PizzaItemsCtrl as formController" style="height: 100%">
+    <form class="form-inline" style="height: 50px;">
+        <div class="form-group">
+            <label>Пицца</label>
+        </div>
+        <div class="form-group">
+            <ui-select id="pizza" ng-model="formController.filters.pizza" theme="selectize" style="width: 196px; margin-top: 4px;">
+                <ui-select-match placeholder="Пицца">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="pizza in formController.pizzas | filter: $select.search">
+                    <span ng-bind-html="pizza.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
 
-</body>
-</html>
+
+        <div class="form-group">
+            <label>Корж</label>
+        </div>
+        <div class="form-group">
+            <ui-select id="shortcake" ng-model="formController.filters.shortcake" theme="selectize" style="width: 196px; margin-top: 4px;">
+                <ui-select-match placeholder="Корж">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="shortcake in formController.shortcakes | filter: $select.search">
+                    <span ng-bind-html="shortcake.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <div class="form-group">
+            <label>Размер</label>
+        </div>
+        <div class="form-group">
+            <ui-select id="size" ng-model="formController.filters.size" theme="selectize" style="width: 196px; margin-top: 4px;">
+                <ui-select-match placeholder="Размер">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="size in formController.sizes | filter: $select.search">
+                    <span ng-bind-html="size.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <div class="form-group">
+            <label>Соус</label>
+        </div>
+        <div class="form-group">
+            <ui-select id="sauce" ng-model="formController.filters.sauce" theme="selectize" style="width: 196px; margin-top: 4px;">
+                <ui-select-match placeholder="Соус">{{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="sauce in formController.sauces | filter: $select.search">
+                    <span ng-bind-html="sauce.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <button type="submit" class="btn btn-default" ng-click="formController.doFilters()">Обновить</button>
+        <button type="submit" class="btn btn-default" ng-click="formController.clearFilters()">Сбросить</button>
+    </form>
+    <div ui-grid="gridOptions" class="ui-grid"
+         ui-grid-selection ui-grid-auto-resize style="width: 100%; height: calc(100% - 50px - 40px);" ></div>
+    <div class="btn-group" style="height: 40px; padding-top: 7px;">
+        <button type="button" ng-click="formController.showCreate()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Добавить</button>
+        <button type="button" ng-disabled="!formController.isRowSelected" ng-click="formController.showEdit()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Редактировать</button>
+        <button type="button" ng-disabled="!formController.isRowSelected" ng-click="formController.showDelete()" class="btn btn-default" style="padding: 6px 10px; font-size: 12px;">Удалить</button>
+
+        <button type="button" ng-click="formController.reload()" class="btn btn-success" style="margin: 0px 0px 0px 7px !important; padding: 6px 10px; font-size: 12px;">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
+
+        <pagination style="margin: 0px 0px 0px 7px !important;" total-items="formController.totalElements"
+                    items-per-page="formController.size"
+                    ng-model="formController.currentPage"
+                    max-size="formController.maxSize"
+                    num-pages="formController.totalPages"
+                    ng-change="formController.pageChanged()"
+                    class="pagination-sm" boundary-links="true" rotate="false"
+                    previous-text="Назад" next-text="Далее" first-text="Первая" last-text="Последняя"></pagination>
+    </div>
+</div>

@@ -32,6 +32,10 @@
     "ROLE_ADMIN": true,
     "ROLE_CASHIER": false
   },
+  "pizza-items": {
+    "ROLE_ADMIN": true,
+    "ROLE_CASHIER": true
+  },
 
   "page-tab": {
     "ROLE_CASHIER": true,

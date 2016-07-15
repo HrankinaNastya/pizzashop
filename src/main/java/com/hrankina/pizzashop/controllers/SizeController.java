@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * creation date 05.07.2016
  *
@@ -25,7 +27,7 @@ public class SizeController {
     private SizeService service;
 
     /**
-     * <p>Info: Get all sizes.</p>
+     * <p>Info: Get all c.</p>
      * <p>Path: <b>/api/sizes</b>.</p>
      * <p>Request method: <b>GET</b>.</p>
      *
@@ -41,6 +43,18 @@ public class SizeController {
         PageRequest pageRequest = new PageRequest(page, limit, sort);
 
         return new ResponseEntity<>(service.getAll(pageRequest), HttpStatus.OK);
+    }
+
+    /**
+     * <p>Info: Get list of sizes.</p>
+     * <p>Path: <b>/api/sizes/list</b>.</p>
+     * <p>Request method: <b>GET</b>.</p>
+     *
+     * @return HttpStatus.OK with list of sizes.
+     */
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ResponseEntity<List<Size>> getSizes() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     /**

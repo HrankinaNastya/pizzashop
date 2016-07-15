@@ -33,6 +33,10 @@ public class SauceService {
         return repo.findAllNonDeleted(pageable);
     }
 
+    public List<Sauce> getAll() {
+        return repo.findAll();
+    }
+
     public void remove(Long id) {
         repo.delete(id);
     }

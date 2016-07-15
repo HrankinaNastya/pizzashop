@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * creation date 03.07.2016
  *
@@ -41,6 +43,18 @@ public class ShortcakeController {
         PageRequest pageRequest = new PageRequest(page, limit, sort);
 
         return new ResponseEntity<>(service.getAll(pageRequest), HttpStatus.OK);
+    }
+
+    /**
+     * <p>Info: Get list of shortcakes.</p>
+     * <p>Path: <b>/api/shortcakes/list</b>.</p>
+     * <p>Request method: <b>GET</b>.</p>
+     *
+     * @return HttpStatus.OK with list of shortcakes.
+     */
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ResponseEntity<List<Shortcake>> getShortcakes() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     /**

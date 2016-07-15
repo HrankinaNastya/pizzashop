@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
+
 /**
  * creation date 03.07.2016
  *
@@ -17,5 +19,8 @@ public interface ShortcakeRepo extends PagingAndSortingRepository<Shortcake, Lon
     @Query("from Shortcake s" +
             " where coalesce(s.deleted, 0) <> 1")
     Page<Shortcake> findAllNonDeleted(Pageable pageable);
+
+    @Query(" from Shortcake s")
+    List<Shortcake> findAll();
 
 }

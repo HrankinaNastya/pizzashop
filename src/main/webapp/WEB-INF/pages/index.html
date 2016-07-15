@@ -24,6 +24,7 @@
     <script type="text/javascript" src="js/shortcakes/shortcakes.js"></script>
     <script type="text/javascript" src="js/sizes/sizes.js"></script>
     <script type="text/javascript" src="js/pizzas/pizzas.js"></script>
+    <script type="text/javascript" src="js/pizza-items/pizza-items.js"></script>
     <script type="text/javascript" src="js/common/utils.js"></script>
 
     <style>
@@ -121,6 +122,8 @@
                         <li ng-hide="isHidden('sizes')"><a href ng-click="mainCtrl.addTab('sizes', 'Размеры', '<sizes-list></sizes-list>')">Размеры</a>
                         </li>
                         <li ng-hide="isHidden('pizzas')"><a href ng-click="mainCtrl.addTab('pizzas', 'Пиццы', '<pizzas-list></pizzas-list>')">Пиццы</a>
+                        </li>
+                        <li ng-hide="isHidden('pizza-items')"><a href ng-click="mainCtrl.addTab('pizza-items', 'PizzaItems', '<pizza-items-list></pizza-items-list>')">PizzaItems</a>
                         </li>
                     </ul>
                 </li>

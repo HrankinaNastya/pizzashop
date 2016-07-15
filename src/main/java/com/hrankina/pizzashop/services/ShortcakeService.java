@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * creation date 03.07.2016
  *
@@ -29,6 +31,10 @@ public class ShortcakeService {
 
     public Page<Shortcake> getAll(Pageable pageable) {
         return repo.findAllNonDeleted(pageable);
+    }
+
+    public List<Shortcake> getAll() {
+        return repo.findAll();
     }
 
     public void remove(Long id) {

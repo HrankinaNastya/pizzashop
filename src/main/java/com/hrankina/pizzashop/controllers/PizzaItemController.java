@@ -25,7 +25,7 @@ public class PizzaItemController {
 
     /**
      * <p>Info: Get all pizza items.</p>
-     * <p>Path: <b>/api/pizzaItems</b>.</p>
+     * <p>Path: <b>/api/pizza-items</b>.</p>
      * <p>Request method: <b>GET</b>.</p>
      *
      * @return page with JSONArray of pizza items.
@@ -37,12 +37,13 @@ public class PizzaItemController {
                                                  @RequestParam(value = "order", required = false, defaultValue = "id") String order,
                                                  @RequestParam(value = "pizza_id", required = false) Long pizzaId,
                                                  @RequestParam(value = "shortcake_id", required = false) Long shortcakeId,
-                                                 @RequestParam(value = "sauce_id", required = false) Long sauceId) {
+                                                 @RequestParam(value = "sauce_id", required = false) Long sauceId,
+                                                 @RequestParam(value = "size_id", required = false) Long sizeId) {
 
         Sort sort = new Sort(dir.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC, order);
         PageRequest pageRequest = new PageRequest(page, limit, sort);
 
-        return new ResponseEntity<>(service.getAll(pageRequest, pizzaId, shortcakeId, sauceId), HttpStatus.OK);
+        return new ResponseEntity<>(service.getAll(pageRequest, pizzaId, shortcakeId, sauceId, sizeId), HttpStatus.OK);
     }
 
     /**
@@ -79,10 +80,6 @@ public class PizzaItemController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> addOne(@RequestBody PizzaItem pizzaItem) {
-
-        Integer quantity = pizzaItem.getQuantity();
-        Double price = pizzaItem.getPizza().getPrice() * quantity;
-        pizzaItem.setPrice(price);
 
         service.save(pizzaItem);
         return new ResponseEntity<>(pizzaItem.getId(), HttpStatus.OK);

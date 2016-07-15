@@ -29,8 +29,8 @@ public class PizzaItemService {
         return repo.findOne(id);
     }
 
-    public Page<PizzaItem> getAll(Pageable pageable, Long pizzaId, Long shortcakeId, Long sauceId) {
-        return repo.findAll(pageable, pizzaId, shortcakeId, sauceId);
+    public Page<PizzaItem> getAll(Pageable pageable, Long pizzaId, Long shortcakeId, Long sauceId, Long sizeId) {
+        return repo.findAll(pageable, pizzaId, shortcakeId, sauceId, sizeId);
     }
 
     public List<PizzaItem> getAll() {

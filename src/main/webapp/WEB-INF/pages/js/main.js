@@ -4,7 +4,7 @@
  * @author A.Hrankina
  */
 (function () {
-    var app = angular.module("main", ["ui.bootstrap", "utils", "users", "sauces", "shortcakes", "sizes", "pizzas"]);
+    var app = angular.module("main", ["ui.bootstrap", "utils", "users", "sauces", "shortcakes", "sizes", "pizzas", "pizzaItems"]);
 
     app.controller("CurrentUserCtrl", function ($rootScope, $scope, $http) {
         var store = this;

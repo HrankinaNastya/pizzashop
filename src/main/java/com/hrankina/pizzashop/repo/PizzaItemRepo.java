@@ -20,8 +20,10 @@ public interface PizzaItemRepo extends PagingAndSortingRepository<PizzaItem, Lon
     @Query("from PizzaItem p" +
             " where (p.pizza.id = :pizzaId or :pizzaId is null)" +
             " and (p.shortcake.id = :shortcakeId or :shortcakeId is null)" +
-            " and (p.sauce.id = :sauceId or :sauceId is null)")
-    Page<PizzaItem> findAll(Pageable pageable, @Param("pizzaId") Long pizzaId, @Param("shortcakeId") Long shortcakeId, @Param("sauceId") Long sauceId);
+            " and (p.sauce.id = :sauceId or :sauceId is null)" +
+            " and (p.size.id = :sizeId or :sizeId is null)")
+    Page<PizzaItem> findAll(Pageable pageable, @Param("pizzaId") Long pizzaId, @Param("shortcakeId") Long shortcakeId,
+                            @Param("sauceId") Long sauceId, @Param("sizeId") Long sizeId);
 
     @Query(" from PizzaItem p")
     List<PizzaItem> findAll();

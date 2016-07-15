@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
+
 /**
  * creation date 05.07.2016
  *
@@ -17,5 +19,8 @@ public interface PizzaRepo extends PagingAndSortingRepository<Pizza, Long> {
     @Query("from Pizza p" +
             " where coalesce(p.deleted, 0) <> 1")
     Page<Pizza> findAllNonDeleted(Pageable pageable);
+
+    @Query(" from Pizza p")
+    List<Pizza> findAll();
 
 }

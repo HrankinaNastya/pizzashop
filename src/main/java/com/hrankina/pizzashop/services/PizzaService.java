@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * creation date 05.07.2016
  *
@@ -29,6 +31,10 @@ public class PizzaService {
 
     public Page<Pizza> getAll(Pageable pageable) {
         return repo.findAllNonDeleted(pageable);
+    }
+
+    public List<Pizza> getAll() {
+        return repo.findAll();
     }
 
     public void remove(Long id) {

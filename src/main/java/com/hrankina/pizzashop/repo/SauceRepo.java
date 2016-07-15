@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 /**
  * creation date 03.07.2016
  *
@@ -19,4 +21,6 @@ public interface SauceRepo extends PagingAndSortingRepository<Sauce, Long> {
             " where coalesce(s.deleted, 0) <> 1")
     Page<Sauce> findAllNonDeleted(Pageable pageable);
 
+    @Query(" from Sauce s")
+    List<Sauce> findAll();
 }
